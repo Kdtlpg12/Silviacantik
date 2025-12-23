@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Silvia Cantikk ✨</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4081;
+            --secondary: #ff9100;
+            --accent: #9c27b0;
+            --light: #fff9f9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Particle Background */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            width: 95%;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        /* Glowing Title */
+        .glowing-title {
+            font-size: 6.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .silvia-text {
+            background: linear-gradient(90deg, 
+                #ff0080, #ff9100, #ffff00, #00ff00, 
+                #00ffff, #0080ff, #9c27b0, #ff0080);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 8s linear infinite, float 6s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 64, 129, 0.5),
+                         0 0 40px rgba(255, 64, 129, 0.3),
+                         0 0 60px rgba(255, 64, 129, 0.1);
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 3px;
+        }
+        
+        .cantikk-text {
+            color: #fff;
+            display: inline-block;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 10px var(--primary),
+                         0 0 20px var(--primary),
+                         0 0 30px var(--primary);
+            font-family: 'Pacifico', cursive;
+            font-size: 5.5rem;
+            margin-left: 20px;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 10px var(--primary),
+                               0 0 20px var(--primary),
+                               0 0 30px var(--primary); }
+            to { text-shadow: 0 0 15px var(--secondary),
+                             0 0 25px var(--secondary),
+                             0 0 35px var(--secondary); }
+        }
+        
+        /* Heart Container */
+        .heart-container {
+            position: relative;
+            height: 200px;
+            margin: 40px auto;
+        }
+        
+        .heart-beat {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: var(--primary);
+            animation: heartbeat 1.2s ease infinite;
+            text-shadow: 0 0 30px rgba(255, 64, 129, 0.8);
+            z-index: 2;
+        }
+        
+        .heart-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s linear infinite;
+        }
+        
+        .heart-ring:nth-child(2) {
+            width: 160px;
+            height: 160px;
+            animation-delay: 0.5s;
+        }
+        
+        .heart-ring:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            animation-delay: 1s;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            25% { transform: translate(-50%, -50%) scale(1.3); }
+            35% { transform: translate(-50%, -50%) scale(1.2); }
+            45% { transform: translate(-50%, -50%) scale(1.3); }
+            50% { transform: translate(-50%, -50%) scale(1); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+        }
+        
+        /* Quote Box */
+        .quote-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, 
+                      rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .quote-text {
+            font-size: 2rem;
+            color: #fff;
+            font-family: 'Dancing Script', cursive;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .quote-author {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+        
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.7;
+            z-index: 5;
+            animation: floatAround 20s infinite linear;
+        }
+        
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, 50px) rotate(90deg); }
+            50% { transform: translate(50px, 100px) rotate(180deg); }
+            75% { transform: translate(-50px, 50px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        
+        /* Control Panel */
+        .control-panel {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .control-btn {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+        
+        .control-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, 
+                      rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .control-btn:hover::before {
+            left: 100%;
+        }
+        
+        .control-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 64, 129, 0.4);
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .glowing-title { font-size: 5rem; }
+            .cantikk-text { font-size: 4.5rem; }
+            .quote-text { font-size: 1.8rem; }
+        }
+        
+        @media (max-width: 768px) {
+            .glowing-title { font-size: 3.5rem; }
+            .cantikk-text { font-size: 3rem; margin-left: 10px; }
+            .quote-text { font-size: 1.5rem; }
+            .container { padding: 20px; }
+            .control-btn { padding: 15px 25px; }
+        }
+        
+        @media (max-width: 480px) {
+            .glowing-title { font-size: 2.5rem; }
+            .cantikk-text { font-size: 2.2rem; }
+            .silvia-text, .cantikk-text { display: block; margin: 10px 0; }
+            .heart-beat { font-size: 70px; }
+            .quote-box { padding: 25px 20px; }
+        }
+        
+        /* 3D Effect */
+        .perspective {
+            perspective: 1000px;
+        }
+        
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+        
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-elements"></div>
+    
+    <!-- Main Container -->
+    <div class="container perspective">
+        <div class="card-3d">
+            <!-- Title -->
+            <h1 class="glowing-title">
+                <span class="silvia-text">SILVIA</span>
+                <span class="cantikk-text">CANTIKK</span>
+            </h1>
+            
+            <!-- Heart Animation -->
+            <div class="heart-container">
+                <div class="heart-ring"></div>
+                <div class="heart-ring"></div>
+                <div class="heart-ring"></div>
+                <div class="heart-beat">❤️</div>
+            </div>
+            
+            <!-- Quote -->
+            <div class="quote-box">
+                <p class="quote-text">
+                    "Kecantikanmu bagaikan bintang di malam hari,<br>
+                    Bersinar terang, memancarkan pesona nan memesona.<br>
+                    Setiap senyumanmu adalah karya seni terindah."
+                </p>
+                <p class="quote-author">- Pesan Spesial -</p>
+            </div>
+            
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <button class="control-btn" onclick="changeTheme()">
+                    <i class="fas fa-palette"></i> Ganti Tema
+                </button>
+                <button class="control-btn" onclick="playFireworks()">
+                    <i class="fas fa-fireworks"></i> Kembang Api
+                </button>
+                <button class="control-btn" onclick="shareLove()">
+                    <i class="fas fa-share-heart"></i> Bagikan Cinta
+                </button>
+                <button class="control-btn" onclick="toggleMusic()">
+                    <i class="fas fa-music"></i> Musik Romantis
+                </button>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <p>✨ Dibuat dengan sepenuh hati untuk Silvia yang luar biasa ✨</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">
+                    <i class="fas fa-heart" style="color: var(--primary); margin: 0 5px;"></i>
+                    Eternal Love - 2024
+                    <i class="fas fa-heart" style="color: var(--primary); margin: 0 5px;"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+    <script>
+        // Initialize Particles.js
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: ["#ff4081", "#ff9100", "#9c27b0"] },
+                shape: { type: ["circle", "triangle", "polygon"] },
+                opacity: { value: 0.7, random: true },
+                size: { value: 5, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ff4081",
+                    opacity: 0.4,
+                    width: 2
+                },
+                move: {
+                    enable: true,
+                    speed: 3,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" }
+                }
+            }
+        });
+
+        // Create floating elements
+        function createFloatingElements() {
+            const container = document.querySelector('.floating-elements');
+            const symbols = ['❤️', '💖', '✨', '🌟', '🎀', '🌸', '💕', '🥰'];
+            
+            for (let i = 0; i < 20; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100}%`;
+                element.style.fontSize = `${Math.random() * 30 + 20}px`;
+                element.style.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                element.style.animationDuration = `${Math.random() * 10 + 15}s`;
+                element.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(element);
+            }
+        }
+
+        // Theme changer
+        const themes = [
+            { primary: '#ff4081', secondary: '#ff9100', accent: '#9c27b0' },
+            { primary: '#2196f3', secondary: '#21CBF3', accent: '#4CAF50' },
+            { primary: '#9c27b0', secondary: '#673ab7', accent: '#ff4081' },
+            { primary: '#4CAF50', secondary: '#8BC34A', accent: '#FFC107' }
+        ];
+        
+        let currentTheme = 0;
+        
+        function changeTheme() {
+            currentTheme = (currentTheme + 1) % themes.length;
+            const theme = themes[currentTheme];
+            
+            document.documentElement.style.setProperty('--primary', theme.primary);
+            document.documentElement.style.setProperty('--secondary', theme.secondary);
+            document.documentElement.style.setProperty('--accent', theme.accent);
+            
+            // Update particles color
+            particlesJS("particles-js", {
+                particles: {
+                    color: { value: [theme.primary, theme.secondary, theme.accent] }
+                }
+            });
+        }
+
+        // Fireworks effect
+        function playFireworks() {
+            const colors = ['#ff4081', '#ffeb3b', '#2196f3', '#4caf50', '#9c27b0'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.style.position = 'fixed';
+                    firework.style.width = '10px';
+                    firework.style.height = '10px';
+                    firework.style.borderRadius = '50%';
+                    firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    firework.style.left = `${Math.random() * 100}%`;
+                    firework.style.top = `${Math.random() * 100}%`;
+                    firework.style.boxShadow = '0 0 20px currentColor';
+                    firework.style.zIndex = '5';
+                    firework.style.animation = `firework 1s ease-out forwards`;
+                    
+                    document.body.appendChild(firework);
+                    
+                    setTimeout(() => firework.remove(), 1000);
+                }, i * 30);
+            }
+            
+            // Add firework animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes firework {
+                    0% { transform: scale(1); opacity: 1; }
+                    50% { transform: scale(3); opacity: 0.7; }
+                    100% { transform: scale(0); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Share function
+        function shareLove() {
+            const url = window.location.href;
+            const text = "Lihat pesan spesial untuk Silvia yang cantik! ✨";
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Untuk Silvia Cantikk',
+                    text: text,
+                    url: url
+                });
+            } else {
+                navigator.clipboard.writeText(`${text}\n${url}`).then(() => {
+                    alert('✨ Pesan berhasil disalin ke clipboard!');
+                });
+            }
+        }
+
+        // Music toggle
+        let musicPlaying = false;
+        let audio;
+        
+        function toggleMusic() {
+            if (!musicPlaying) {
+                // Create or reuse audio element
+                if (!audio) {
+                    audio = new Audio('https://assets.mixkit.co/music/preview/mixkit-romantic-sunset-687.mp3');
+                    audio.loop = true;
+                    audio.volume = 0.5;
+                }
+                audio.play();
+                musicPlaying = true;
+                document.querySelector('.control-btn:nth-child(4) i').className = 'fas fa-volume-up';
+            } else {
+                if (audio) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+                musicPlaying = false;
+                document.querySelector('.control-btn:nth-child(4) i').className = 'fas fa-music';
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingElements();
+            
+            // Add click effect to title
+            document.querySelector('.glowing-title').addEventListener('click', () => {
+                document.querySelector('.silvia-text').style.animation = 'rainbow 4s linear infinite, shake 0.5s ease';
+                setTimeout(() => {
+                    document.querySelector('.silvia-text').style.animation = 'rainbow 8s linear infinite, float 6s ease-in-out infinite';
+                }, 500);
+            });
+            
+            // Add shake animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    25% { transform: translateX(-10px); }
+                    75% { transform: translateX(10px); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        // Mouse trail effect
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.style.position = 'fixed';
+            trail.style.width = '10px';
+            trail.style.height = '10px';
+            trail.style.borderRadius = '50%';
+            trail.style.backgroundColor = 'var(--primary)';
+            trail.style.left = `${e.clientX}px`;
+            trail.style.top = `${e.clientY}px`;
+            trail.style.pointerEvents = 'none';
+            trail.style.zIndex = '100';
+            trail.style.opacity = '0.7';
+            trail.style.animation = 'fadeOut 1s forwards';
+            
+            document.body.appendChild(trail);
+            
+            setTimeout(() => trail.remove(), 1000);
+        });
+
+        // Fade out animation for mouse trail
+        const trailStyle = document.createElement('style');
+        trailStyle.textContent = `
+            @keyframes fadeOut {
+                0% { opacity: 0.7; transform: scale(1); }
+                100% { opacity: 0; transform: scale(0); }
+            }
+        `;
+        document.head.appendChild(trailStyle);
+    </script>
+</body>
+</html>
